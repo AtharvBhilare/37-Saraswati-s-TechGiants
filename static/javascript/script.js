@@ -26,6 +26,9 @@ function addNewAQFeild(){
     AqOb.insertBefore(newNode, aqAddButtonOb);
 
 }
+function cancelNewAQFeild(){
+    newNode.close;
+}
 
 //Genarate Resume 
 function generateresume(){
@@ -74,6 +77,19 @@ function generateresume(){
     document.getElementById("resume-form").style.display="none";
     document.getElementById("resume-template").style.display="block";
 
+    let file = document.getElementById("ImageField").files[0];
+    
+    console.log(file);
+
+    let reader = new FileReader();
+
+    reader.readAsDataURL(file);
+
+    console.log(reader.result);
+
+    reader.onloadend = function(){
+    document.getElementById("imgTemp").src = reader.result;
+    };
 }
 
 function printresume(){
@@ -81,5 +97,10 @@ function printresume(){
 }
 
 function createresume(){
-    console.log("ADDIng Resume");
+
+    document.getElementById("resume-form").style.display="block";
+    
 }
+
+
+
